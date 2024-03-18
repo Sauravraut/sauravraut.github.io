@@ -1,106 +1,112 @@
-const link = "https://picsum.photos/v2/list?limit=10&page=1"
-let photos = []
+const link = "https://picsum.photos/v2/list?limit=10&page=1";
+let photos = [];
+let carousel_items = [];
 let current_image_index = 0;
-const image =  document.getElementById('current_image')
-const aurthor =  document.getElementById('current_image_aurthor')
-const origin = document.getElementById('current_image_original')
-const carousel = document.getElementById('carousel')
+const author = document.getElementById("image_author");
+const carousel = document.getElementById("carousel");
+const images = document.getElementById("images");
 
-
+start();
 
 /**
  * fetches the photos and selects a random one to display
  */
-fetch(link)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    photos = data
-    current_image_index = getRandomInt(photos.length)
-    gen_carousel_items(current_image_index)
-    change_Image(current_image_index)
-  })
-  .catch(error => {
-    console.error('Error:', error);
-});
-
-/**
- * generates carosel items based on photos
- */
-function gen_carousel_items(active_index) {
-    for (let i = 0; i < photos.length; i++) {
-      const item = document.createElement('div')
-      item.setAttribute('id', i);
-      item.addEventListener("click", change_active_item)
-      if(i === active_index) {
-        item.classList.add('active')
+function start() {
+  fetch(link)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Response was not ok");
       }
-      carousel.appendChild(item)
-    }
-}
-/**
- * changes the image to a specific index
- */
-function change_Image(index) {
-  console.log(index)
-    update_active_item(index.toString())
-    photo = photos[index]
-    image.src = photo.download_url
-    aurthor.innerHTML = "Aurthor : " + photo.author
-    origin.setAttribute('href', photo.url);
+      return response.json();
+    })
+    .then((data) => {
+      generateImages(data);
+      current_image_index = getRandomInt(data.length);
+      addActive();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 }
 
 /**
- * changes the image to next index
+ * generates images and associated item
  */
-function nextImage() {
-  current_image_index++
-  if(current_image_index >= photos.length) {
-    current_image_index = 0
+function generateImages(data) {
+  for (let i = 0; i < data.length; i++) {
+    // create image
+    const img = new Image();
+    img.author = data[i].author;
+    img.origin = data[i].url;
+    img.src = data[i].download_url;
+
+    // create carousel item
+    const item = document.createElement("div");
+    item.setAttribute("id", i);
+    item.addEventListener("click", onCarouselItemClick);
+
+    // add to refrence for later
+    carousel_items.push(item);
+    photos.push(img);
+
+    // add to dom
+    images.appendChild(img);
+    carousel.appendChild(item);
   }
-  change_Image(current_image_index)
 }
-
 
 /**
- * changes the image to previous index
+ * updates Author
  */
-function prevImage() {
-  current_image_index--
-  if(current_image_index < 0) {
-    current_image_index = photos.length - 1
-  }
-  change_Image(current_image_index)
+function updateAuthor() {
+  author.innerHTML = "Author : " + photos[current_image_index].author;
+  author.setAttribute("href", photos[current_image_index].origin);
 }
 
+/**
+ * changes the image to a new index based on the adder
+ */
+function nextImage(adder) {
+  removeActive();
+
+  current_image_index += parseInt(adder);
+
+  if (current_image_index >= photos.length) {
+    current_image_index = 0;
+  } else if (current_image_index < 0) {
+    current_image_index = photos.length - 1;
+  }
+
+  addActive();
+}
 
 /**
  * changes active carousel item
  */
-function update_active_item(id) {
-    // remove active
-    const ele = document.getElementsByClassName("active")
-    for(let element of ele){
-      element.classList.remove("active")
-    }
-    // add active
-    document.getElementById(id).classList.add("active")
+function onCarouselItemClick() {
+  removeActive();
+
+  current_image_index = this.id;
+
+  addActive();
 }
 
+/**
+ * removes active class from current
+ */
+function removeActive() {
+  photos[current_image_index].classList.remove("active");
+  carousel_items[current_image_index].classList.remove("active");
+}
 
 /**
- * changes active carousel item
+ * adds active class to current
  */
-function change_active_item() {
-  console.log(this.id)
-  update_active_item(this.id)
-  // update photo
-  current_image_index = parseInt(this.id)
-  change_Image(this.id)
+function addActive() {
+  photos[current_image_index].classList.add("active");
+  carousel_items[current_image_index].classList.add("active");
+
+  updateAuthor();
 }
 
 /**
