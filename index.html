@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="main.css">
+    <title>Photos</title>
+</head>
+
+<body>
+
+    <div id="container">
+        <div class="side" onclick="prevImage()">
+            <img src="arrow.svg" class="arrow arrow_left">
+        </div>
+
+        <div class="main">
+            <div class="main_box">
+                <img id="current_image">
+                <div id="image_data_container">
+                    <p id="current_image_aurthor">Aurthor: XDD </p>
+                    <a href="" id="current_image_original">Original</a>
+                </div>
+            </div>
+    
+            <div id="carousel">
+            </div>
+        </div>
+
+        <div class="side" onclick="nextImage()">
+
+            <img src="arrow.svg" class="arrow">
+        </div>
+    </div>
+
+</body>
+<script src="main.js"></script>
+
+</html>
