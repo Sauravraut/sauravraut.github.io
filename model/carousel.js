@@ -16,10 +16,10 @@ export default class Carousel {
     // add keypress event
     document.addEventListener("keyup", (event) => {
       if (event.code === "ArrowLeft") {
-        carousel.prevItem();
+        this.prevItem();
       }
       if (event.code === "ArrowRight") {
-        carousel.nextItem();
+        this.nextItem();
       }
     });
   }
