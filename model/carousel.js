@@ -6,22 +6,15 @@ export default class Carousel {
    * @param {any[]} items array of items
    * @param {HTMLElement} div container of carousel items
    * @param {HTMLElement} display container of display elements
+   * @param {HTMLElement} rightArrow element which on click increases current index
+   * @param {HTMLElement} leftArrow element which on click decreases current index
    */
-  constructor(div, displayDiv) {
+  constructor(div, displayDiv, rightArrow, leftArrow) {
     this.container = div;
     this.displayContainer = displayDiv;
     this.items = [];
     this.current = getRandomInt(this.items.length);
-
-    // add keypress event
-    document.addEventListener("keyup", (event) => {
-      if (event.code === "ArrowLeft") {
-        this.prevItem();
-      }
-      if (event.code === "ArrowRight") {
-        this.nextItem();
-      }
-    });
+    this.#addEventListener(rightArrow, leftArrow);
   }
   /**
    * Returns the currently active Carousel items
@@ -61,6 +54,24 @@ export default class Carousel {
     this.current = index;
 
     this.currentItem.addActive();
+  }
+  /**
+   * adds event listener
+   *
+   */
+  #addEventListener(rightArrow, leftArrow) {
+    // add keypress event
+    document.addEventListener("keyup", (event) => {
+      if (event.code === "ArrowLeft") {
+        this.prevItem();
+      }
+      if (event.code === "ArrowRight") {
+        this.nextItem();
+      }
+    });
+
+    rightArrow.addEventListener("click", () => this.nextItem());
+    leftArrow.addEventListener("click", () => this.prevItem());
   }
   /**
    * adds items to the Carousel
