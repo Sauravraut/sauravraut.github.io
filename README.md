@@ -1,7 +1,7 @@
 # Image carousel
 
-Image carousel with HTML, JS and css
-hosted by GitHubPages @[link](https://sauravraut.github.io)
+Image carousel with HTML, JS and CSS
+hosted by GitHubPages @ [link](https://sauravraut.github.io)
 
 # How to run
 
@@ -10,5 +10,6 @@ git clone https://github.com/Sauravraut/sauravraut.github.io.git
 ```
 
 On Visual studio Code
-install live server
-press "Go Live" on live server
+
+- install [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+- press "Go Live" on the bottom right
