@@ -7,13 +7,21 @@ export default class Carousel {
    * @param {HTMLElement} div container of carousel items
    * @param {HTMLElement} display container of display elements
    */
-  constructor(items, div, display_div) {
-    this.div = div;
-    this.display_div = display_div;
-    this.items = items.map(
-      (item, index) => new CarouselItem(index, item, this.div, this.display_div)
-    );
+  constructor(div, displayDiv) {
+    this.container = div;
+    this.displayContainer = displayDiv;
+    this.items = [];
     this.current = getRandomInt(this.items.length);
+
+    // add keypress event
+    document.addEventListener("keyup", (event) => {
+      if (event.code === "ArrowLeft") {
+        carousel.prevItem();
+      }
+      if (event.code === "ArrowRight") {
+        carousel.nextItem();
+      }
+    });
   }
   /**
    * Returns the currently active Carousel items
@@ -60,14 +68,16 @@ export default class Carousel {
    */
   addItems(items) {
     for (const item of items) {
-      const newItem = new CarouselItem(
+      const newCarouselItem = new CarouselItem(
         this.items.length,
         item,
-        this.div,
-        this.display_div
+        this.container,
+        this.displayContainer
       );
-      newItem.div.addEventListener("click", () => this.onItemClick(newItem.id));
-      this.items.push(newItem);
+      newCarouselItem.div.addEventListener("click", () =>
+        this.onItemClick(newCarouselItem.id)
+      );
+      this.items.push(newCarouselItem);
     }
 
     this.onItemClick(getRandomInt(this.items.length));
@@ -91,16 +101,16 @@ class CarouselItem {
   /**
    * @param {Number} index index of item in the carousel
    * @param {any} item item iteself
-   * @param {HTMLElement} parent_div container of carousel items
-   * @param {HTMLElement} display_div container of display elements
+   * @param {HTMLElement} parentDiv container of carousel items
+   * @param {HTMLElement} displayDiv container of display elements
    */
-  constructor(index, item, parent_div, display_div) {
+  constructor(index, item, parentDiv, displayDiv) {
     this.id = index;
     this.item = item;
     this.div = document.createElement("div");
 
-    parent_div.appendChild(this.div);
-    display_div.appendChild(this.item.element);
+    parentDiv.appendChild(this.div);
+    displayDiv.appendChild(this.item.element);
   }
 
   /**

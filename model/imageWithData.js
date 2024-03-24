@@ -1,7 +1,7 @@
 /**
  * Photo class containg image and the metadata about the image
  */
-export default class Photo {
+export default class ImageWithData {
   /**
    * @param {String} author author of the image
    * @param {String} url download url of the image
