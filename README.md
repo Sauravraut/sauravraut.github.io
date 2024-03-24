@@ -1,7 +1,8 @@
 # Image carousel
 
-Image carousel with HTML, JS and CSS
-hosted by GitHubPages @ [link](https://sauravraut.github.io)
+Infinite scrolling Image carousel with HTML, JS and CSS built around OOP concepts
+
+hosted by GitHub Pages @ [link](https://sauravraut.github.io)
 
 # How to run
 
