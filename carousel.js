@@ -34,7 +34,6 @@ export class Carousel {
     this.currentItem.removeActive();
 
     this.current = id;
-
     this.currentItem.addActive();
   }
 
@@ -46,7 +45,7 @@ export class Carousel {
         this.div,
         this.display
       );
-      newItem.div.addEventListener("click", () => this.onItemClick(item.id));
+      newItem.div.addEventListener("click", () => this.onItemClick(newItem.id));
       this.items.push(newItem);
     }
 
@@ -54,10 +53,10 @@ export class Carousel {
   }
 
   #loopItems() {
-    if (this.current >= this.items.legnth) {
+    if (this.current >= this.items.length) {
       this.current = 0;
     } else if (this.current < 0) {
-      this.current = this.items.legnth - 1;
+      this.current = this.items.length - 1;
     }
   }
 }
@@ -88,6 +87,7 @@ export class Photo {
     this.url = download_url;
     this.origin = url;
     this.ele = new Image();
+    this.ele.src = download_url;
     this.ele.setAttribute("loading", "lazy");
   }
 }
