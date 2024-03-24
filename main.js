@@ -1,5 +1,5 @@
+import FetchImages from "./domain/fetch.js";
 import Carousel from "./model/carousel.js";
-import ImageWithData from "./model/imageWithData.js";
 
 const carouselDiv = document.getElementById("carousel");
 const imagesDiv = document.getElementById("images");
@@ -14,15 +14,6 @@ leftArrow.addEventListener("click", () => carousel.prevItem());
 
 const link = "https://picsum.photos/v2/list?limit=10&page=1";
 
-try {
-  const response = await fetch(link);
-  const images = await response.json();
+const images = await FetchImages(link);
 
-  const ImagesWithData = images.map(
-    (image) => new ImageWithData(image.author, image.download_url, image.url)
-  );
-
-  carousel.addItems(ImagesWithData);
-} catch (error) {
-  console.error("Error: ", error);
-}
+carousel.addItems(images);
