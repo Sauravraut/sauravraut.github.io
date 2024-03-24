@@ -1,5 +1,9 @@
 import ImageWithData from "../model/imageWithData.js";
-
+/**
+ * Return a promise of Images from the link
+ * @param {String} link
+ * @returns {Promise<ImageWithData[]>}
+ */
 export default async function FetchImages(link) {
   try {
     const response = await fetch(link);

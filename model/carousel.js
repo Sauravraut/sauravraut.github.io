@@ -56,26 +56,6 @@ export default class Carousel {
     this.currentItem.addActive();
   }
   /**
-   * adds event listener
-   * @param {HTMLElement} rightArrow element which on click increases current index
-   * @param {HTMLElement} leftArrow element which on click decreases current index
-   */
-  #addEventListener(rightArrow, leftArrow) {
-    document.addEventListener("keyup", (event) => {
-      if (event.code === "ArrowLeft") {
-        this.prevItem();
-      }
-      if (event.code === "ArrowRight") {
-        this.nextItem();
-      }
-    });
-
-    if (rightArrow && leftArrow) {
-      rightArrow.addEventListener("click", () => this.nextItem());
-      leftArrow.addEventListener("click", () => this.prevItem());
-    }
-  }
-  /**
    * adds items to the Carousel
    * @param {any[]} items array of items to be added
    */
@@ -103,6 +83,26 @@ export default class Carousel {
       this.current = 0;
     } else if (this.current < 0) {
       this.current = this.items.length - 1;
+    }
+  }
+  /**
+   * adds event listener
+   * @param {HTMLElement} rightArrow element which on click increases current index
+   * @param {HTMLElement} leftArrow element which on click decreases current index
+   */
+  #addEventListener(rightArrow, leftArrow) {
+    document.addEventListener("keyup", (event) => {
+      if (event.code === "ArrowLeft") {
+        this.prevItem();
+      }
+      if (event.code === "ArrowRight") {
+        this.nextItem();
+      }
+    });
+
+    if (rightArrow && leftArrow) {
+      rightArrow.addEventListener("click", () => this.nextItem());
+      leftArrow.addEventListener("click", () => this.prevItem());
     }
   }
 }
