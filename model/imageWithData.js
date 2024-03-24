@@ -1,5 +1,5 @@
 /**
- * Photo class containg image and the metadata about the image
+ * Images with metadata which are lazy loaded
  */
 export default class ImageWithData {
   /**
