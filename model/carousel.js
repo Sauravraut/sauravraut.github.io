@@ -57,10 +57,10 @@ export default class Carousel {
   }
   /**
    * adds event listener
-   *
+   * @param {HTMLElement} rightArrow element which on click increases current index
+   * @param {HTMLElement} leftArrow element which on click decreases current index
    */
   #addEventListener(rightArrow, leftArrow) {
-    // add keypress event
     document.addEventListener("keyup", (event) => {
       if (event.code === "ArrowLeft") {
         this.prevItem();
@@ -70,8 +70,10 @@ export default class Carousel {
       }
     });
 
-    rightArrow.addEventListener("click", () => this.nextItem());
-    leftArrow.addEventListener("click", () => this.prevItem());
+    if (rightArrow && leftArrow) {
+      rightArrow.addEventListener("click", () => this.nextItem());
+      leftArrow.addEventListener("click", () => this.prevItem());
+    }
   }
   /**
    * adds items to the Carousel
