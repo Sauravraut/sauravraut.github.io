@@ -9,12 +9,12 @@ export default class Carousel {
    * @param {HTMLElement} rightArrow element which on click increases current index
    * @param {HTMLElement} leftArrow element which on click decreases current index
    */
-  constructor(div, displayDiv, rightArrow, leftArrow) {
+  constructor(div, displayDiv, leftArrow, rightArrow) {
     this.container = div;
     this.displayContainer = displayDiv;
     this.items = [];
     this.current = getRandomInt(this.items.length);
-    this.#addEventListener(rightArrow, leftArrow);
+    this.#addEventListener(leftArrow, rightArrow);
   }
   /**
    * Returns the currently active Carousel items
@@ -90,7 +90,7 @@ export default class Carousel {
    * @param {HTMLElement} rightArrow element which on click increases current index
    * @param {HTMLElement} leftArrow element which on click decreases current index
    */
-  #addEventListener(rightArrow, leftArrow) {
+  #addEventListener(leftArrow, rightArrow) {
     document.addEventListener("keyup", (event) => {
       if (event.code === "ArrowLeft") {
         this.prevItem();
