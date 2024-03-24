@@ -8,6 +8,8 @@ const images = document.getElementById("images");
 
 start();
 
+// TODO: compare lazy loading vs non lazy loading
+
 /**
  * fetches the photos and selects a random one to display
  */
@@ -36,6 +38,7 @@ function generateImages(data) {
   for (let i = 0; i < data.length; i++) {
     // create image
     const img = new Image();
+    img.setAttribute("loading", "lazy");
     img.author = data[i].author;
     img.origin = data[i].url;
     img.src = data[i].download_url;
