@@ -8,13 +8,9 @@ const rightArrow = document.getElementById("rightArrow");
 
 const carousel = new Carousel(carouselDiv, imagesDiv);
 
-// add click event to arrow images
+// add click event to arrows
 rightArrow.addEventListener("click", () => carousel.nextItem());
 leftArrow.addEventListener("click", () => carousel.prevItem());
-
-// update varialbe and calss to be literal name
-// update arrow div changing size
-// alt text
 
 const link = "https://picsum.photos/v2/list?limit=10&page=1";
 

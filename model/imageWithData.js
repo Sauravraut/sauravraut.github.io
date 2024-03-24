@@ -15,5 +15,6 @@ export default class ImageWithData {
     this.element = new Image();
     this.element.src = download_url;
     this.element.setAttribute("loading", "lazy");
+    this.element.setAttribute("alt", "Image by " + this.author);
   }
 }
