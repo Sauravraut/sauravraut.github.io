@@ -30,11 +30,11 @@ body {
 }
 
 .main {
-  height: 90vh;
+  height: 95vh;
   width: 60vw;
 
   display: flex;
-  gap: 10px;
+  gap: 1vh;
 
   flex-direction: column;
   align-items: center;
@@ -42,10 +42,11 @@ body {
 }
 
 #images {
-  height: 100%;
+  min-height: 90%;
   width: 100%;
 
   display: flex;
+  flex-direction: column;
 
   justify-content: center;
   align-items: center;
@@ -65,15 +66,9 @@ body {
   display: block;
 }
 
-#image_author {
-  position: absolute;
-  bottom: -25px;
-  left: 0;
-}
-
 #carousel {
   width: 100%;
-  height: 20px;
+  height: 4vh;
 
   display: flex;
   gap: 8px;
@@ -82,8 +77,8 @@ body {
 }
 
 #carousel div {
-  height: 15px;
-  width: 20px;
+  height: 50%;
+  width: 1em;
   background-color: #ffffff4b;
   border-radius: 5px;
   cursor: pointer;
@@ -104,5 +99,4 @@ body {
 }
 
 #image_author {
-  font-size: 1rem;
 }
