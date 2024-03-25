@@ -9,15 +9,17 @@ export default class Carousel {
    * @param {HTMLElement} rightArrow element which on click increases current index
    * @param {HTMLElement} leftArrow element which on click decreases current index
    */
-  constructor(div, displayDiv, leftArrow, rightArrow) {
+  constructor(div, displayDiv, leftArrow, rightArrow, authorDiv) {
     this.container = div;
     this.displayContainer = displayDiv;
+    this.authorContainer = authorDiv;
     this.items = [];
     this.current = getRandomInt(this.items.length);
     this.#addEventListener(leftArrow, rightArrow);
   }
   /**
    * Returns the currently active Carousel items
+   * @returns {CarouselItem}
    */
   get currentItem() {
     return this.items[this.current];
@@ -32,6 +34,7 @@ export default class Carousel {
     this.#loopIndex();
 
     this.currentItem.addActive();
+    this.updateAuthor();
   }
   /**
    * reduces the current Index by 1
@@ -43,6 +46,7 @@ export default class Carousel {
     this.#loopIndex();
 
     this.currentItem.addActive();
+    this.updateAuthor();
   }
   /**
    * on carousel item click, sets that items as active
@@ -54,6 +58,7 @@ export default class Carousel {
     this.current = index;
 
     this.currentItem.addActive();
+    this.updateAuthor();
   }
   /**
    * adds items to the Carousel
@@ -76,7 +81,14 @@ export default class Carousel {
     this.onItemClick(getRandomInt(this.items.length));
   }
   /**
-   * Loops the current index to be in bound of items array
+   *  Updates author
+   */
+  updateAuthor() {
+    this.authorContainer.setAttribute("href", this.currentItem.item.origin);
+    this.authorContainer.innerHTML = this.currentItem.item.author;
+  }
+  /**
+   * Loops the current index to be in bound of theitems array
    */
   #loopIndex() {
     if (this.current >= this.items.length) {

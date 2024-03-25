@@ -1,6 +1,9 @@
 # Image carousel
 
-Infinite scrolling Image carousel with HTML, JS and CSS built around OOP concepts
+Infinite scrolling Image carousel with HTML, JS and CSS built around OOP concepts.
+
+Images can be moved around by clicking on the carousel, clicking on the arrows on the left and right of the screen or
+by using the arrow keys on your keyboard.
 
 hosted by GitHub Pages @ [link](https://sauravraut.github.io)
 

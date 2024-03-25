@@ -18,10 +18,13 @@ body {
 
 .arrow {
   width: 10vw;
-  color: red;
   cursor: pointer;
+  fill: #ffffff4b;
 }
 
+.arrow:hover {
+  fill: #ffffffa8;
+}
 .arrow_left {
   transform: rotate(180deg);
 }
@@ -64,7 +67,8 @@ body {
 
 #image_author {
   position: absolute;
-  bottom: 0;
+  bottom: -25px;
+  left: 0;
 }
 
 #carousel {
@@ -91,4 +95,10 @@ body {
 
 #carousel .active {
   background-color: #ffffffa8;
+}
+
+#bg_loading {
+  z-index: -1;
+  font-size: 100px;
+  position: absolute;
 }
