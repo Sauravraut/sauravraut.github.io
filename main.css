@@ -99,6 +99,10 @@ body {
 
 #bg_loading {
   z-index: -1;
-  font-size: 100px;
+  font-size: 10vw;
   position: absolute;
+}
+
+#image_author {
+  font-size: 1rem;
 }
