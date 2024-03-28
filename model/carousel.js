@@ -5,9 +5,8 @@ import getRandomInt from "./helper.js";
  */
 export default class Carousel {
   /**
-   * @param {any[]} items array of items
    * @param {HTMLElement} div container of carousel items
-   * @param {HTMLElement} display container of display elements
+   * @param {HTMLElement} displayDiv container of display elements
    * @param {HTMLElement} rightArrow element which on click increases current index
    * @param {HTMLElement} leftArrow element which on click decreases current index
    * @param {HTMLElement} authorDiv element containing the image author detials
