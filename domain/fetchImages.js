@@ -1,10 +1,10 @@
 import ImageWithData from "../model/imageWithData.js";
 /**
  * Return a promise of Images from the link
- * @param {String} link
  * @returns {Promise<ImageWithData[]>}
  */
-export default async function FetchImages(link) {
+export default async function FetchImages() {
+  const link = "https://picsum.photos/v2/list?limit=10&page=1";
   try {
     const response = await fetch(link);
     const images = await response.json();
