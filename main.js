@@ -5,7 +5,7 @@ const carouselDiv = document.getElementById("carousel");
 const imagesDiv = document.getElementById("images");
 const leftArrow = document.getElementById("leftArrow");
 const rightArrow = document.getElementById("rightArrow");
-const authorDiv = document.getElementById("image_author");
+const authorDiv = document.getElementById("imageAuthor");
 
 const carousel = new Carousel(
   carouselDiv,
