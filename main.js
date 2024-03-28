@@ -1,4 +1,4 @@
-import fetchImages from "./domain/fetchImages.js";
+import fetchImages from "./helper/fetchImages.js";
 import Carousel from "./model/carousel.js";
 
 const carouselDiv = document.getElementById("carousel");

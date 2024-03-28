@@ -1,5 +1,5 @@
 import CarouselItem from "./carouselItem.js";
-import getRandomInt from "./helper.js";
+import getRandomInt from "../helper/helper.js";
 /**
  * Carousel of items
  */
