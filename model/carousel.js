@@ -83,14 +83,14 @@ export default class Carousel {
     this.onItemClick(getRandomInt(this.items.length));
   }
   /**
-   *  Updates author
+   *  Updates author based on the image data
    */
   updateAuthor() {
     this.authorContainer.setAttribute("href", this.currentItem.item.origin);
     this.authorContainer.innerHTML = this.currentItem.item.author;
   }
   /**
-   * Loops the current index to be in bound of theitems array
+   * Loops the current index to be in bound of the items array
    */
   #loopIndex() {
     if (this.current >= this.items.length) {
