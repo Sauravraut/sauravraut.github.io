@@ -1,4 +1,4 @@
-import FetchImages from "./domain/fetchImages.js";
+import fetchImages from "./domain/fetchImages.js";
 import Carousel from "./model/carousel.js";
 
 const carouselDiv = document.getElementById("carousel");
@@ -15,5 +15,5 @@ const carousel = new Carousel(
   authorDiv
 );
 
-const images = await FetchImages();
+const images = await fetchImages();
 carousel.addItems(images);

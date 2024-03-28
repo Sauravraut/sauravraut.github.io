@@ -3,7 +3,7 @@
  */
 export default class CarouselItem {
   /**
-   * @param {Number} index index of item in the carousel
+   * @param {Number} index index of the item in the carousel
    * @param {any} item item iteself
    * @param {HTMLElement} parentDiv container of carousel items
    * @param {HTMLElement} displayDiv container of display elements
