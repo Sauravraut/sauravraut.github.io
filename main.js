@@ -7,7 +7,7 @@ const carouselDiv = document.getElementById("carousel");
 const imagesDiv = document.getElementById("images");
 const leftArrow = document.getElementById("leftArrow");
 const rightArrow = document.getElementById("rightArrow");
-const author = document.getElementById("image_author");
+const authorDiv = document.getElementById("image_author");
 
 const images = await FetchImages(link);
 
@@ -16,7 +16,7 @@ const carousel = new Carousel(
   imagesDiv,
   leftArrow,
   rightArrow,
-  author
+  authorDiv
 );
 
 carousel.addItems(images);
